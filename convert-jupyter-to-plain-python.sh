@@ -59,5 +59,6 @@ while read -r file; do
       # Fix a typo in Chapter 03
       sed -i "s/from spellchecker import SpellChecker/from spellchecker import Spellchecker as SpellChecker/" "$python_file"
       sed -i "1a\# Generated from '$(basename "$file")' with $(basename $0)." "$python_file"
+      git add "$python_file"
     fi
 done

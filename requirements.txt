@@ -3,6 +3,10 @@ regex
 nltk
 spellchecker
 tensorflow
+keras
+protobuf
+tensorflow-datasets
+tensorflow-estimator
 transformers
 bertviz
 numpy
