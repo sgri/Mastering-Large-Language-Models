@@ -14,7 +14,6 @@ pandas
 faiss-cpu
 openai
 langchain
-en-core-web-sm
 matplotlib
 langchain-community
 langchain-core
