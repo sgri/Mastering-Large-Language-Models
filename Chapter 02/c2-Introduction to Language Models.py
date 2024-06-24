@@ -197,6 +197,7 @@ def extract_ngrams(data, num):
     return [ ' '.join(grams) for grams in n_grams]
 
 My_text = 'I am interested in machine learning and deep learning.'
+nltk.download('punkt')
 
 print("1-gram of the sample text: ", extract_ngrams(My_text, 1), '\n')
 print("2-gram of the sample text: ", extract_ngrams(My_text, 2), '\n')
