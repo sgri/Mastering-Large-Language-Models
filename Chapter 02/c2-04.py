@@ -2,105 +2,9 @@
 # Generated from 'c2-Introduction to Language Models.ipynb' with convert-jupyter-to-plain-python.sh.
 # coding: utf-8
 
-# # Training 'Rule-Based Models'
-
-# **Example 1: Using regular expressions**
-
-# In[1]:
-
-
-import spacy
-import re
-
-nlp = spacy.load('en_core_web_sm')
-
-# Define a pattern using a regular expression
-pattern = r"\d{3}-\d{3}-\d{4}"  # Matches phone numbers in the format XXX-XXX-XXXX
-
-# Text to be processed
-text = "Please call me at 123-456-7890."
-
-# Process the text
-doc = nlp(text)
-
-# Iterate over the matches
-for match in re.finditer(pattern, doc.text):
-    start, end = match.span()
-    span = doc.char_span(start, end)
-    # This is a Span object or None if match doesn't map to valid token sequence
-    if span is not None:
-        print("Found match:", span.text)
-
-
-# **Example 2: Matching patterns using part-of-speech tags**
-
-# In[2]:
-
-
-import spacy
-from spacy.matcher import Matcher
-
-nlp = spacy.load('en_core_web_sm')
-matcher = Matcher(nlp.vocab)
-
-# Define the pattern using part-of-speech tags
-pattern = [{'POS': 'NOUN'}, {'POS': 'VERB'}]
-
-# Add the pattern to the matcher
-matcher.add('NOUN_VERB_NOUN_PATTERN', [pattern])
-
-# Text to be processed
-text = "I saw a boy playing in the gardan."
-
-# Process the text
-doc = nlp(text)
-
-# Apply the matcher to the doc
-matches = matcher(doc)
-
-# Iterate over the matches
-for match_id, start, end in matches:
-    matched_span = doc[start:end]
-    print(matched_span.text)
-
-
-# **Example 3: Matching specific tokens with specific attributes**
-
-# In[3]:
-
-
-import spacy
-from spacy.matcher import Matcher
-
-nlp = spacy.load('en_core_web_sm')
-matcher = Matcher(nlp.vocab)
-
-# Define the pattern
-pattern = [{'LOWER': 'machine'}, {'LOWER': 'learning'}]
-
-# Add the pattern to the matcher
-matcher.add('ML_PATTERN', [pattern])
-
-# Text to be processed
-text = "I am interested in machine learning and deep learning."
-
-# Process the text
-doc = nlp(text)
-
-# Apply the matcher to the doc
-matches = matcher(doc)
-
-# Iterate over the matches
-for match_id, start, end in matches:
-    matched_span = doc[start:end]
-    print(matched_span.text)
-
-
 # # Training 'Statistical Models'
 
 # **Example 4: simple implementation of a bigram language model.**
-
-# In[4]:
 
 
 # Define a function to read the data from a list of sentences
@@ -181,32 +85,3 @@ bigramProb = calcBigramProb(listOfBigrams, unigramCounts, bigramCounts)
 
 print("\n Bigrams along with their probability ")
 print(bigramProb)
-
-
-# **Example 5: Example of find ngrams of the sentence**
-
-# In[5]:
-
-
-import nltk
-from nltk.util import ngrams
-
-# Function to generate n-grams from sentences.
-def extract_ngrams(data, num):
-    n_grams = ngrams(nltk.word_tokenize(data), num)
-    return [ ' '.join(grams) for grams in n_grams]
-
-My_text = 'I am interested in machine learning and deep learning.'
-nltk.download('punkt')
-
-print("1-gram of the sample text: ", extract_ngrams(My_text, 1), '\n')
-print("2-gram of the sample text: ", extract_ngrams(My_text, 2), '\n')
-print("3-gram of the sample text: ", extract_ngrams(My_text, 3), '\n')
-print("4-gram of the sample text: ", extract_ngrams(My_text, 4), '\n')
-
-
-# In[ ]:
-
-
-
-
