@@ -19,7 +19,7 @@ pattern = [{'POS': 'NOUN'}, {'POS': 'VERB'}]
 matcher.add('NOUN_VERB_NOUN_PATTERN', [pattern])
 
 # Text to be processed
-text = "I saw a boy playing in the gardan."
+text = "I saw a boy playing in the garden."
 
 # Process the text
 doc = nlp(text)

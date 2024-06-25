@@ -6,9 +6,6 @@
 
 # **Example 5: Example of find ngrams of the sentence**
 
-# In[5]:
-
-
 import nltk
 from nltk.util import ngrams
 
@@ -24,7 +21,4 @@ print("1-gram of the sample text: ", extract_ngrams(My_text, 1), '\n')
 print("2-gram of the sample text: ", extract_ngrams(My_text, 2), '\n')
 print("3-gram of the sample text: ", extract_ngrams(My_text, 3), '\n')
 print("4-gram of the sample text: ", extract_ngrams(My_text, 4), '\n')
-
-
-
 
