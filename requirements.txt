@@ -1,7 +1,7 @@
 spacy
 regex
 nltk
-spellchecker
+pyspellchecker
 tensorflow
 keras
 protobuf
