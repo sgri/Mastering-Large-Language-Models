@@ -12,6 +12,9 @@ doc = nlp("John wants to buy $1 million house")
 for token in doc:
     print(token.text, token.pos_, token.tag_)
 
+print(spacy.explain("NNP"))
+print(spacy.explain("VBZ"))
+
 
 
 

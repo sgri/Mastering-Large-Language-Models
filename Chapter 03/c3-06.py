@@ -7,9 +7,6 @@
 import spacy
 from spacy import displacy
 
-print(spacy.explain("NNP"))
-print(spacy.explain("VBZ"))
-
 nlp = spacy.load("en_core_web_sm")
 doc = nlp("John saw a flashy blue hat at the store")
 displacy.serve(doc, style="dep", port=5051)
