@@ -14,7 +14,7 @@ train_labels = np.array([[1], [0], [0], [1]])
 
 # Define the architecture of the feedforward neural network
 model = tf.keras.models.Sequential([
-    tf.keras.layers.Dense(2, activation='relu', input_shape=(2,)),
+    tf.keras.layers.Dense(10, activation='relu', input_shape=(2,)),
     tf.keras.layers.Dense(1, activation='sigmoid')
 ])
 
