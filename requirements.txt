@@ -2,7 +2,8 @@ spacy
 regex
 nltk
 pyspellchecker
-tensorflow
+nvidia-cudnn-cu11==8.6.0.163
+tensorflow[and-cuda]
 keras
 protobuf
 tensorflow-datasets
