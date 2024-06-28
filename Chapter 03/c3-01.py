@@ -44,7 +44,6 @@ def standardize_text(text):
 
 # Spelling correction
 def correct_spelling(text):
-    corrected_text = ""
     spell = SpellChecker()
     corrected_text = ' '.join([spell.correction(word) for word in text.split()])
     return corrected_text
