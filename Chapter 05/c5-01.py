@@ -8,6 +8,7 @@
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.datasets import imdb
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # Define hyperparameters
 max_features = 20000 # Number of words to consider as features
@@ -26,8 +27,8 @@ num_epochs = 10 # Number of training epochs
 (x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=max_features)
 
 # Pad sequences with zeros
-x_train = keras.preprocessing.sequence.pad_sequences(x_train, maxlen=maxlen)
-x_test = keras.preprocessing.sequence.pad_sequences(x_test, maxlen=maxlen)
+x_train = pad_sequences(x_train, maxlen=maxlen)
+x_test = pad_sequences(x_test, maxlen=maxlen)
 
 
 # Define LSTM model using the Sequential API
@@ -55,3 +56,29 @@ print(model.summary())
 loss, accuracy = model.evaluate(x_test, y_test)
 print(f"Loss: {loss}")
 print(f"Accuracy: {accuracy}")
+
+word_index = imdb.get_word_index()
+
+def preprocess_review(review, maxlen):
+    # Tokenize and convert the review to integer sequence
+    tokens = [word_index.get(word, 0) for word in review.lower().split()]
+    # Pad the sequence
+    return pad_sequences([tokens], maxlen=maxlen, padding='pre')
+
+def classify_review(model, review, maxlen):
+    # Preprocess the review
+    sequence = preprocess_review(review, maxlen)
+    # Predict sentiment
+    prediction = model.predict(sequence)
+    # Return predicted class
+    return 'Positive' if prediction[0] > 0.5 else 'Negative'
+
+reviews = [
+    "The story line is boring, actors don't perform. Everything about this screams 'B' movie!'",
+    "This movie was fantastic with great performances!",
+]
+
+# Example usage
+for review in reviews:
+    result = classify_review(model, review, maxlen)
+    print(f"{result} -> {review}")
