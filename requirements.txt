@@ -4,6 +4,7 @@ nltk
 pyspellchecker
 nvidia-cudnn-cu11~=8.9.6
 tensorflow[and-cuda]
+tensorflow_text
 keras
 protobuf
 tensorflow-datasets
