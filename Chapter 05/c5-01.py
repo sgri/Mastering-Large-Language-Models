@@ -52,4 +52,6 @@ model.fit(x_train, y_train, batch_size=batch_size, epochs=num_epochs, validation
 print(model.summary())
 
 # Evaluate the model on test data
-model.evaluate(x_test, y_test)
+loss, accuracy = model.evaluate(x_test, y_test)
+print(f"Loss: {loss}")
+print(f"Accuracy: {accuracy}")
