@@ -29,8 +29,8 @@ tokens = tokenizer.convert_ids_to_tokens(input_id_list)
 
 # ## Display Attention
 # The head view visualizes attention in one or more heads from a single Transformer layer.
-# Each line shows the attention from one token (left) to another (right). L
-# ine weight reflects the attention value (ranges from 0 to 1), while line color identifies the attention head.
+# Each line shows the attention from one token (left) to another (right).
+# Line weight reflects the attention value (ranges from 0 to 1), while line color identifies the attention head.
 # When multiple heads are selected (indicated by the colored tiles at the top),
 # the corresponding visualizations are overlaid onto one another.
 # head view
