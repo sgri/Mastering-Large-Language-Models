@@ -19,3 +19,5 @@ langchain
 matplotlib
 langchain-community
 langchain-core
+ipython
+web-browser
